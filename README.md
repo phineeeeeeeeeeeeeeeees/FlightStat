@@ -9,6 +9,7 @@
   + for particular aircrafts (eg. B-18007)
 * build models for predicting certain movement
   + naive Bayes
+* GUI (later)
 
 ### Dependencies: 
 built upon the flight data API in Python `pyflightdata ` and `flightradar24`
