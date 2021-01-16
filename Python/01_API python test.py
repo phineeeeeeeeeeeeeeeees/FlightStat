@@ -5,6 +5,7 @@ flightradar API
 
 @author: liutzuli
 """
+import geopy
 
 # ==================================
 # flightradar24
@@ -29,6 +30,7 @@ flight = fr.get_flight("CI61")
 fr.get_flight("CI61")
 
 
+
 # ==================================
 # pyflightdata
 # ==================================
@@ -41,6 +43,9 @@ f = FlightData()
 # and also maintains the authenticated session to flightradar24 for users who have a paid membership.
 f.login("crab6v8521@gmail.com","Phineas6629woho_")
 f.logout()
+
+# search flight
+f.get_flights("CI61")
 
 # Flight history by flight number
 f.get_history_by_flight_number('CI61')[-5:]
@@ -83,6 +88,7 @@ f.get_airport_weather("TSA")
 
 # get fleet  (pass the airline-code from get_airlines)
 f.get_fleet('ci-cal')
+
 
 
 

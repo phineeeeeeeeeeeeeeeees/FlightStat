@@ -49,6 +49,7 @@ FlightData <- import("pyflightdata")$FlightData            # `from pyflightdata 
 FlightData.API <- FlightData()
 FlightData.API$login("crab6v8521@gmail.com" , "Phineas6629woho_")
 
+
 # Flight history by registration
 History_B18007 <- FlightData.API$get_history_by_tail_number(tail_number = "B-18007")
 str(History_B18007[[1]])                                   # 看看資料儲存的結構：list中還有list，identification; status; aircraft; owner; airline; airport; time
@@ -75,3 +76,7 @@ Fleet_CI_df <- pd$DataFrame$from_dict(Fleet_CI)
 
 # get airports
 FlightData.API$get_airports('Taiwan')
+
+
+
+
