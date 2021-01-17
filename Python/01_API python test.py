@@ -5,8 +5,6 @@ flightradar API
 
 @author: liutzuli
 """
-import geopy
-
 # ==================================
 # flightradar24
 # ==================================
@@ -41,7 +39,7 @@ from pyflightdata import FlightData  # pip install pyflightdata
 f = FlightData()
 # This abstracts all the data access mechanism 
 # and also maintains the authenticated session to flightradar24 for users who have a paid membership.
-f.login("crab6v8521@gmail.com","Phineas6629woho_")
+f.login("crab6v8521@gmail.com","xu.6y3xu4b04801015")
 f.logout()
 
 # search flight
@@ -52,10 +50,19 @@ f.get_history_by_flight_number('CI61')[-5:]
 f.get_flights_from_to(origin="FRA" , destination="TPE")
 
 # Flight history by registration
-History_B18918 = f.get_history_by_tail_number("B-18918")
 History_B18007 = f.get_history_by_tail_number("B-18007")
+History_B18918 = f.get_all_available_history_by_tail_number("B-18918")
 
 History_B18007[0].keys()
+History_B18918[0]["identification"]       # flight number
+History_B18918[0]["status"]               # live? 
+History_B18918[0]["aircraft"]
+History_B18918[0]["owner"]
+History_B18918[0]["aircraft"]
+History_B18918[0]["airport"]              # origin, destination 
+History_B18918[0]["time"]                 # scheduled, actual time of departure/ arrival
+
+
 
 
 # Information about the aircraft (like age)

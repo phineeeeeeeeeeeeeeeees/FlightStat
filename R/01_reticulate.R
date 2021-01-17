@@ -4,8 +4,6 @@
 # 2021-01-16
 #####################################################################################################
 
-library(dplyr)
-
 # =====================================
 # configure python
 # =====================================
@@ -47,14 +45,22 @@ FlightData <- import("pyflightdata")$FlightData            # `from pyflightdata 
 
 # initiate class object FlightData; login to flightradar24 API
 FlightData.API <- FlightData()
-FlightData.API$login("crab6v8521@gmail.com" , "Phineas6629woho_")
-
+FlightData.API$login("crab6v8521@gmail.com" , "xu.6y3xu4b04801015")
 
 # Flight history by registration
 History_B18007 <- FlightData.API$get_history_by_tail_number(tail_number = "B-18007")
 str(History_B18007[[1]])                                   # 看看資料儲存的結構：list中還有list，identification; status; aircraft; owner; airline; airport; time
+
 History_B18918 <- FlightData.API$get_all_available_history_by_tail_number("B-18918")
 History_B18918[[145]]
+History_B18918[[145]]$identification
+History_B18918[[145]]$status
+History_B18918[[145]]$airport
+History_B18918[[145]]$time
+
+# Search flights by keywords
+FlightData.API$get_flights("CI61")
+FlightData.API$get_flight_for_date("CI61" , "20210110")
 
 # Flight history by flight number
 History_CI61 <- FlightData.API$get_history_by_flight_number('CI61')
