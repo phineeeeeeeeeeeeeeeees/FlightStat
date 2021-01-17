@@ -18,7 +18,7 @@ py_config()
 
 
 # =====================================
-# test API "pyflightdata"
+# connect to API "pyflightdata"
 # =====================================
 # py_install("pyflightdata" , pip = TRUE)
 FlightData <- import("pyflightdata")$FlightData            # `from pyflightdata import FlightData`
