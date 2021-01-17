@@ -23,9 +23,12 @@ py_config()
 # py_install("pyflightdata" , pip = TRUE)
 FlightData <- import("pyflightdata")$FlightData            # `from pyflightdata import FlightData`
 
-# initiate class object FlightData; login to flightradar24 API
+# initiate class object FlightData
 FlightData.API <- FlightData()
-FlightData.API$login("crab6v8521@gmail.com" , "xu.6y3xu4b04801015")
+
+# login to flightradar24 API
+source("R/F00_FR24-login.R")
+FlightData.API$login(FR24.id , FR24.pw)
 
 FlightData.API$logout()
 

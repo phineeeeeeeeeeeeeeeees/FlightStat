@@ -43,9 +43,12 @@ airports_df <- pd$DataFrame$from_dict(airports$rows)       # 將list的儲存格
 # py_install("pyflightdata" , pip = TRUE)
 FlightData <- import("pyflightdata")$FlightData            # `from pyflightdata import FlightData`
 
-# initiate class object FlightData; login to flightradar24 API
+# initiate class object FlightData
 FlightData.API <- FlightData()
-FlightData.API$login("crab6v8521@gmail.com" , "xu.6y3xu4b04801015")
+
+# login to flightradar24 API
+source("R/F00_FR24-login.R")
+FlightData.API$login(FR24.id , FR24.pw)
 
 # Flight history by registration
 History_B18007 <- FlightData.API$get_history_by_tail_number(tail_number = "B-18007")
