@@ -12,4 +12,4 @@
 * GUI (later)
 
 ### Dependencies: 
-built upon the flight data API in Python `pyflightdata ` and `flightradar24`
+built upon the flight data API in Python `pyflightdata` and `flightradar24`
