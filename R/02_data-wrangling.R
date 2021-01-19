@@ -36,7 +36,9 @@ FlightData.API$logout()
 # by registration: all available flight history
 # =====================================
 
+History_B18918 <- FlightData.API$get_history_by_tail_number("B-18918")
 History_B18918 <- FlightData.API$get_all_available_history_by_tail_number("B-18918")
+
 
 # API回傳一個nested dictionary
 History_B18918[[145]]
@@ -56,7 +58,7 @@ RegHistory_df <- History_B18918 %>%
   select(time.scheduled.departure , time.scheduled.arrival , 
          identification.number.default , identification.callsign ,
          owner.name , airline.code.iata , 
-         airport.origin.code.iata , airport.destination.code.iata , airport.origin.timezone.abbr , airport.destination.timezone.abbr ,
+         airport.origin.code.iata , airport.destination.code.iata , airport.origin.timezone.name , airport.destination.timezone.name ,
          time.real.departure , time.real.arrival , time.estimated.departure , time.estimated.arrival , 
          status.live , status.text , status.generic.status.text) %>% 
   # transform every column to character
@@ -72,8 +74,8 @@ RegHistory_df <- History_B18918 %>%
          airline.code = airline.code.iata , 
          origin = airport.origin.code.iata , 
          dest = airport.destination.code.iata , 
-         origin_tz = airport.origin.timezone.abbr , 
-         dest_tz = airport.destination.timezone.abbr ,
+         origin_tz = airport.origin.timezone.name , 
+         dest_tz = airport.destination.timezone.name ,
          ATD = time.real.departure , 
          ATA = time.real.arrival , 
          ETD = time.estimated.departure , 
@@ -101,7 +103,7 @@ FlightHistory_df <- History_CI61 %>%
          identification.number.default , identification.callsign , 
          aircraft.registration , aircraft.model.code , 
          status.live , status.text , status.generic.status.text , 
-         airport.origin.code.iata , airport.destination.code.iata , airport.origin.timezone.abbr , airport.destination.timezone.abbr , 
+         airport.origin.code.iata , airport.destination.code.iata , airport.origin.timezone.name , airport.destination.timezone.name , 
          time.real.departure , time.real.arrival , time.estimated.departure , time.estimated.arrival ) %>% 
   # transform every column to character
   mutate(across(.cols = everything() , .fns = as.character)) %>% 
@@ -117,8 +119,8 @@ FlightHistory_df <- History_CI61 %>%
          status.type = status.generic.status.text , 
          origin = airport.origin.code.iata , 
          dest = airport.destination.code.iata , 
-         origin_tz = airport.origin.timezone.abbr , 
-         dest_tz = airport.destination.timezone.abbr ,
+         origin_tz = airport.origin.timezone.name , 
+         dest_tz = airport.destination.timezone.name ,
          ATD = time.real.departure , 
          ATA = time.real.arrival , 
          ETD = time.estimated.departure , 
