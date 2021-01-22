@@ -19,8 +19,8 @@ rm(FlightData , FlightData.API , get_RegHistory_df , get_FlightHistory_df)   # ä
 # =====================================
 # example
 # =====================================
-OI_registration <- "JA873A"
-OI_airport <- "NRT"
+OI_registration <- "B-16331"
+OI_airport <- "TPE"
 
 # get flight history of the aircraft
 #OI_RegHist_df <- get_RegHistory_df(OI_registration , all = FALSE)
@@ -140,13 +140,18 @@ Reg_presence_ts %>%
   ggplot(aes(x = datetime , y = presence)) +
   geom_line()
 # autospectrum
-Reg_presence_ts %>% 
+Reg_presence_ts_spec <- Reg_presence_ts %>% 
   select(presence) %>% 
   unlist %>% 
   ts() %>% 
   # spectral density
-  astsa::mvspec(spans = 5) 
-
+  astsa::mvspec(spans = 5) %>% 
+  .$details
+Reg_presence_ts_spec %>% 
+  as_tibble() %>% 
+  ggplot(aes(x = frequency , y = spectrum , text = period)) +
+  geom_line()
+plotly::ggplotly()
 # =====================================
 # Naive Bayes model (binaary presence)
 # =====================================
