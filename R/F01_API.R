@@ -27,7 +27,7 @@ source("R/F00_FR24-login.R")             # master login mode
 # FR24.id <- "crab6v8521@gmail.com"
 # FR24.pw <- askpass::askpass(paste0("Enter the password for flightradar24 subscription (ID: " , FR24.id , ")"))
 FlightData.API$login(FR24.id , FR24.pw)
-
+rm(FR24.id , FR24.pw)
 
 # =====================================
 # search by registration: all available flight history
